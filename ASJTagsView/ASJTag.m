@@ -74,15 +74,23 @@
 
 - (void)setTagText:(NSString *)tagText
 {
-  if (!tagText) {
-    return;
-  }
-  _tagText = tagText;
-  
-  [UIView performWithoutAnimation:^{
-    [_tagButton setTitle:tagText forState:UIControlStateNormal];
-    [_tagButton layoutIfNeeded];
-  }];
+    if (!tagText) {
+        return;
+    }
+    _tagText = tagText;
+    if ([tagText hasPrefix:@"~"]) {
+        [UIView performWithoutAnimation:^{
+            [_tagButton setTitle:[tagText substringFromIndex:1] forState:UIControlStateNormal];
+            [_tagButton layoutIfNeeded];
+        }];
+        [_tagButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    } else {
+        [UIView performWithoutAnimation:^{
+            [_tagButton setTitle:tagText forState:UIControlStateNormal];
+            [_tagButton layoutIfNeeded];
+        }];
+        [_tagButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
 }
 
 - (void)setTagTextColor:(UIColor *)tagTextColor
