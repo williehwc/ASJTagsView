@@ -25,7 +25,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^TagBlock)(NSString *tagText, NSInteger idx);
+typedef void (^TagBlock)(NSString *tagText, NSInteger idx, UIButton* tagButton);
 
 @interface ASJTag : UIView
 
