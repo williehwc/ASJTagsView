@@ -59,14 +59,14 @@
 - (IBAction)tagTapped:(UIButton *)sender
 {
   if (_tapBlock) {
-    _tapBlock(sender.titleLabel.text, self.tag);
+    _tapBlock(sender.titleLabel.text, self.tag, self.tagButton);
   }
 }
 
 - (IBAction)deleteTapped:(UIButton *)sender
 {
   if (_deleteBlock) {
-    _deleteBlock(_tagButton.titleLabel.text, self.tag);
+    _deleteBlock(_tagButton.titleLabel.text, self.tag, self.tagButton);
   }
 }
 
@@ -78,7 +78,7 @@
         return;
     }
     _tagText = tagText;
-    if ([tagText hasPrefix:@"~"]) {
+    if ([tagText hasPrefix:@"@"]) {
         [UIView performWithoutAnimation:^{
             [_tagButton setTitle:[tagText substringFromIndex:1] forState:UIControlStateNormal];
             [_tagButton layoutIfNeeded];
@@ -111,7 +111,6 @@
   [_deleteButton setImage:crossImage forState:UIControlStateNormal];
 }
 
-// Comment out because we don't use it and it causes memory management problems.
 /*- (void)setTagFont:(UIFont *)tagFont
 {
   if (!tagFont) {
