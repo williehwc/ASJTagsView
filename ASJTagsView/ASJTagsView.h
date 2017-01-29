@@ -27,7 +27,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^TagBlock)(NSString *tagText, NSInteger idx);
+typedef void (^TagBlock)(NSString *tagText, NSInteger idx, UIButton* tagButton);
 
 /**
  *  These are a few predefined color themes you can use instead of the 'tagColor' property. All colors except the default taken from: https://github.com/bennyguitar/Colours
