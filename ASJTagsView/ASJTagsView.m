@@ -328,17 +328,17 @@
 
 - (void)setupBlocksForTagView:(ASJTag *)tagView
 {
-  [tagView setTapBlock:^(NSString *tagText, NSInteger idx)
+  [tagView setTapBlock:^(NSString *tagText, NSInteger idx, UIButton* tagButton)
    {
      if (_tapBlock) {
-       _tapBlock(tagText, idx);
+       _tapBlock(tagText, idx, tagButton);
      }
    }];
   
-  [tagView setDeleteBlock:^(NSString *tagText, NSInteger idx)
+  [tagView setDeleteBlock:^(NSString *tagText, NSInteger idx, UIButton* tagButton)
    {
      if (_deleteBlock) {
-       _deleteBlock(tagText, idx);
+       _deleteBlock(tagText, idx, tagButton);
      }
    }];
 }
